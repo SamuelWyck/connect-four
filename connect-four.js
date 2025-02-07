@@ -98,3 +98,26 @@ function board() {
 
     return {"boardArray": boardArray, "addToken": addToken};
 };
+
+
+const game = (function() {
+    const gameBoard = board();
+    const endCheck = winCheck();
+    const playerMaker = playerFactory();
+
+    const color1 = "R";
+    const color2 = "B";
+
+    let getPlayers = function() {
+        const [playerName1, playerName2] = getPlayerName();
+
+        const player1 = playerMaker.makePlayer(playerName1, color1);
+        const player2 = playerMaker.makePlayer(playerName2, color2);
+        return [player1, player2];
+    };
+
+    let getPlayerName = function() {
+
+    };
+
+})();

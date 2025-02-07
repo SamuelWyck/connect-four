@@ -1,5 +1,8 @@
-function player(name, color) {
-    return {"name": name, "color": color};
+function playerFactory() {
+    let makePlayer = function(name, color) {
+        return {"name": name, "color": color};
+    };
+    return {"makePlayer": makePlayer};
 };
 
 

@@ -64,8 +64,34 @@ const game = (function() {
         ["O", "O", "O", "O", "O", "O", "O"]
     ];
 
+    let emptySpace = "O";
 
 
+    let addToken = function(col, color) {
+        let row = 0;
+        const colValid = 0 <= col && col < board[0].length;
+        if (!colValid) {
+            return false;
+        } else if (board[row][col] !== emptySpace) {
+            return false;
+        }
+        
+        let dfsAddToken = function(row, col, color) {
+            const nextRowValid = 0 <= row + 1 && row + 1 < board.length;
+            const currentPos = board[row][col];
+            if (!nextRowValid || board[row + 1][col] !== emptySpace) {
+                if (currentPos === emptySpace) {
+                    board[row][col] = color;
+                    return true;
+                }
+                return false;
+            }
 
-    return {"board": board, };
+            return dfsAddToken(row + 1, col, color);
+        };
+
+        return dfsAddToken(row, col, color);
+    };
+
+    return {"board": board, "addToken": addToken};
 })();

@@ -70,21 +70,39 @@ function board() {
     let emptySpace = "O";
 
 
+    let reset = function() {
+        let newBoardArray = [
+            ["O", "O", "O", "O", "O", "O", "O"],
+            ["O", "O", "O", "O", "O", "O", "O"],
+            ["O", "O", "O", "O", "O", "O", "O"],
+            ["O", "O", "O", "O", "O", "O", "O"],
+            ["O", "O", "O", "O", "O", "O", "O"],
+            ["O", "O", "O", "O", "O", "O", "O"]
+        ];
+        boardArray = newBoardArray;
+    };
+
+
+    let getBoard = function() {
+        return boardArray;
+    };
+
+
     let addToken = function(col, color) {
         let row = 0;
-        const colValid = 0 <= col && col < board[0].length;
+        const colValid = 0 <= col && col < boardArray[0].length;
         if (!colValid) {
             return false;
-        } else if (board[row][col] !== emptySpace) {
+        } else if (boardArray[row][col] !== emptySpace) {
             return false;
         }
         
         let dfsAddToken = function(row, col, color) {
-            const nextRowValid = 0 <= row + 1 && row + 1 < board.length;
-            const currentPos = board[row][col];
-            if (!nextRowValid || board[row + 1][col] !== emptySpace) {
+            const nextRowValid = 0 <= row + 1 && row + 1 < boardArray.length;
+            const currentPos = boardArray[row][col];
+            if (!nextRowValid || boardArray[row + 1][col] !== emptySpace) {
                 if (currentPos === emptySpace) {
-                    board[row][col] = color;
+                    boardArray[row][col] = color;
                     return true;
                 }
                 return false;
@@ -96,7 +114,10 @@ function board() {
         return dfsAddToken(row, col, color);
     };
 
-    return {"boardArray": boardArray, "addToken": addToken};
+    return {
+        "getBoard": getBoard, "addToken": addToken,
+        "reset": reset
+    };
 };
 
 

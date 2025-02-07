@@ -54,7 +54,7 @@ function winCheck() {
 };
 
 
-const board = (function() {
+function board() {
     let boardArray = [
         ["O", "O", "O", "O", "O", "O", "O"],
         ["O", "O", "O", "O", "O", "O", "O"],
@@ -94,4 +94,4 @@ const board = (function() {
     };
 
     return {"boardArray": boardArray, "addToken": addToken};
-})();
+};

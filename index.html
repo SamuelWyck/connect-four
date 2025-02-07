@@ -10,10 +10,24 @@
     <body>
         <h1>CONNECT FOUR!</h1>
         <div class="main">
-            <div class="btns-container">
-
+            <div class="control-interface">
+                <div class="btn-container">
+                    <button type="button" class="new-gam-btn" disabled>New Game</button>
+                    <button type="button" class="start-btn">Start Game</button>
+                </div>
+                <div class="input-container">
+                    <div>
+                        <label for="red-player">Red Player</label>
+                        <input type="text" id="red-player" placeholder="Red Player">
+                    </div>
+                    <div>
+                        <label for="blue-player">Blue Player</label>
+                        <input type="text" id="blue-player" placeholder="Blue Player">
+                    </div>
+                </div>
             </div>
             <div class="board-container">
+                <span class="turn-prompt"></span>
                 <div class="drop-zone">
                     <div class="drop-zone-cell col-0"></div>
                     <div class="drop-zone-cell col-1"></div>

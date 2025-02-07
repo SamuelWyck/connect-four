@@ -109,14 +109,14 @@ const game = (function() {
     const color2 = "B";
 
     let getPlayers = function() {
-        const [playerName1, playerName2] = getPlayerName();
+        const [playerName1, playerName2] = getPlayerNames();
 
         const player1 = playerMaker.makePlayer(playerName1, color1);
         const player2 = playerMaker.makePlayer(playerName2, color2);
         return [player1, player2];
     };
 
-    let getPlayerName = function() {
+    let getPlayerNames = function() {
 
     };
 

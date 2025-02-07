@@ -54,8 +54,8 @@ function winCheck() {
 };
 
 
-const game = (function() {
-    let board = [
+const board = (function() {
+    let boardArray = [
         ["O", "O", "O", "O", "O", "O", "O"],
         ["O", "O", "O", "O", "O", "O", "O"],
         ["O", "O", "O", "O", "O", "O", "O"],
@@ -93,5 +93,5 @@ const game = (function() {
         return dfsAddToken(row, col, color);
     };
 
-    return {"board": board, "addToken": addToken};
+    return {"boardArray": boardArray, "addToken": addToken};
 })();

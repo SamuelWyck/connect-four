@@ -12,6 +12,10 @@ html {
     background-color: #42BFDD;
 }
 
+:root {
+    --color: blue;
+}
+
 h1 {
     font-family: "Knewave", "Roboto", sans-serif;
     letter-spacing: .1rem;
@@ -118,7 +122,15 @@ label[for="blue-player"] {
     /* box-shadow: 0px 0px 0px 1px darkred; */
 }
 
+.turn-color {
+    background-color: var(--color);
+}
+
 .btn-container button:hover {
     color: #FF9F1C;
     background-color: #12263A;
+}
+
+.drop-zone-cell:hover {
+    background-color: var(--color);
 }

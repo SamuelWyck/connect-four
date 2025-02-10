@@ -245,6 +245,14 @@ const game = (function() {
         }
     };
 
+    function changePlayerTurn() {
+        if (playerTurn === redPlayer) {
+            playerTurn = bluePlayer;
+        } else {
+            playerTurn = redPlayer;
+        }
+    };
+
     function newGameEvent() {
         gameBoard.reset();
         gameStarted = false;

@@ -83,10 +83,6 @@ label[for="blue-player"] {
     margin-top: 1rem;
 }
 
-.board-container {
-
-}
-
 .board {
     background-color: #12263A;
     display: grid;
@@ -103,3 +99,12 @@ label[for="blue-player"] {
     border-radius: 50%;
 }
 
+.blue {
+    background-color: blue;
+    box-shadow: 0px 0px 5px 8px inset darkblue;
+}
+
+.red {
+    background-color: red;
+    box-shadow: 0px 0px 5px 8px inset darkred;
+}

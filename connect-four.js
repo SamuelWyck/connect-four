@@ -175,10 +175,16 @@ function DOMLogic() {
         return [redName, blueName];
     };
 
+    let toggleInputs = function() {
+        redInput.disabled = !redInput.disabled;
+        blueInput.disabled = !blueInput.disabled;
+    };
+
     return {
         "boardClickLogic": boardClickLogic,
         "menuClickLogic": menuClickLogic,
         "getPlayerNames": getPlayerNames,
+        "toggleInputs": toggleInputs,
     };
 };
 
@@ -189,30 +195,25 @@ const game = (function() {
     const playerMaker = playerFactory();
 
     const displayLink = DOMLogic();
-    displayLink.menuClickLogic(menuClickEvent);
+    displayLink.menuClickLogic(gameStartEvent);
 
     let gameStarted = false;
     const colorRed = "R";
     const colorBlue = "B";
-    let redPlayer = playerMaker.makePlayer("Red Player", color1);
+    let redPlayer = playerMaker.makePlayer("Red Player", colorRed);
     let bluePlayer = playerMaker.makePlayer("Blue Player", colorBlue);
 
-    let getPlayers = function() {
-        const [playerName1, playerName2] = getPlayerNames();
-
-        const player1 = playerMaker.makePlayer(playerName1, color1);
-        const player2 = playerMaker.makePlayer(playerName2, color2);
-        return [player1, player2];
+    let startGame = function() {
+        const [redName, blueName] = displayLink.getPlayerNames();
+        redPlayer.name = redName;
+        bluePlayer.name = blueName;
+        displayLink.toggleInputs();
     };
 
-    let menuClickEvent = function(element) {
+    function gameStartEvent(element) {
         if (!gameStarted) {
             startGame();
         }
     };
 
-    let startGame = function() {
-        const [redName, blueName] = displayLink.getPlayerNames();
-
-    };
 })();

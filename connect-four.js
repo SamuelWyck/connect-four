@@ -152,10 +152,12 @@ function DOMLogic() {
         });
     };
 
-    let menuClickLogic = function(callBack) {
+    let menuClickLogic = function(startCallBack, newCallBack) {
         menuBtnDiv.addEventListener("click", function(event) {
             if (event.target.matches(".start-btn")) {
-                callBack();
+                startCallBack();
+            } else if (event.target.matches(".new-game-btn")) {
+                newCallBack();
             }
         }) 
     };
@@ -195,7 +197,7 @@ const game = (function() {
     const playerMaker = playerFactory();
 
     const displayLink = DOMLogic();
-    displayLink.menuClickLogic(gameStartEvent);
+    displayLink.menuClickLogic(gameStartEvent, newGameEvent);
 
     let gameStarted = false;
     const colorRed = "R";

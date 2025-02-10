@@ -23,3 +23,21 @@ h1 {
     text-shadow: 1px 1px gray;
 }
 
+.main {
+    display: flex;
+    margin: 0 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.control-interface {
+    min-width: 40%;
+}
+
+.board-container {
+
+}
+
+
+

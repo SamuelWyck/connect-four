@@ -8,6 +8,81 @@
     </head>
 
     <body>
-        
+        <div class="main">
+            <div class="control-interface">
+                <h1>CONNECT FOUR!</h1>
+                <div class="btn-container">
+                    <button type="button" class="new-game-btn">New Game</button>
+                    <button type="button" class="start-btn">Start Game</button>
+                </div>
+                <div class="input-container">
+                    <div>
+                        <label for="red-player">Red Player</label>
+                        <input type="text" id="red-player" placeholder="Red Player">
+                    </div>
+                    <div>
+                        <label for="blue-player">Blue Player</label>
+                        <input type="text" id="blue-player" placeholder="Blue Player">
+                    </div>
+                </div>
+            </div>
+            <div class="board-container">
+                <span class="turn-prompt"></span>
+                <div class="drop-zone">
+                    <div class="drop-zone-cell col-0" data-col="0"></div>
+                    <div class="drop-zone-cell col-1" data-col="1"></div>
+                    <div class="drop-zone-cell col-2" data-col="2"></div>
+                    <div class="drop-zone-cell col-3" data-col="3"></div>
+                    <div class="drop-zone-cell col-4" data-col="4"></div>
+                    <div class="drop-zone-cell col-5" data-col="5"></div>
+                    <div class="drop-zone-cell col-6" data-col="6"></div>
+                </div>
+                <div class="board">
+                    <div class="board-cell col-0 row-0" data-col="0"></div>
+                    <div class="board-cell col-1 row-0" data-col="1"></div>
+                    <div class="board-cell col-2 row-0" data-col="2"></div>
+                    <div class="board-cell col-3 row-0" data-col="3"></div>
+                    <div class="board-cell col-4 row-0" data-col="4"></div>
+                    <div class="board-cell col-5 row-0" data-col="5"></div>
+                    <div class="board-cell col-6 row-0" data-col="6"></div>
+                    <div class="board-cell col-0 row-1" data-col="0"></div>
+                    <div class="board-cell col-1 row-1" data-col="1"></div>
+                    <div class="board-cell col-2 row-1" data-col="2"></div>
+                    <div class="board-cell col-3 row-1" data-col="3"></div>
+                    <div class="board-cell col-4 row-1" data-col="4"></div>
+                    <div class="board-cell col-5 row-1" data-col="5"></div>
+                    <div class="board-cell col-6 row-1" data-col="6"></div>
+                    <div class="board-cell col-0 row-2" data-col="0"></div>
+                    <div class="board-cell col-1 row-2" data-col="1"></div>
+                    <div class="board-cell col-2 row-2" data-col="2"></div>
+                    <div class="board-cell col-3 row-2" data-col="3"></div>
+                    <div class="board-cell col-4 row-2" data-col="4"></div>
+                    <div class="board-cell col-5 row-2" data-col="5"></div>
+                    <div class="board-cell col-6 row-2" data-col="6"></div>
+                    <div class="board-cell col-0 row-3" data-col="0"></div>
+                    <div class="board-cell col-1 row-3" data-col="1"></div>
+                    <div class="board-cell col-2 row-3" data-col="2"></div>
+                    <div class="board-cell col-3 row-3" data-col="3"></div>
+                    <div class="board-cell col-4 row-3" data-col="4"></div>
+                    <div class="board-cell col-5 row-3" data-col="5"></div>
+                    <div class="board-cell col-6 row-3" data-col="6"></div>
+                    <div class="board-cell col-0 row-4" data-col="0"></div>
+                    <div class="board-cell col-1 row-4" data-col="1"></div>
+                    <div class="board-cell col-2 row-4" data-col="2"></div>
+                    <div class="board-cell col-3 row-4" data-col="3"></div>
+                    <div class="board-cell col-4 row-4" data-col="4"></div>
+                    <div class="board-cell col-5 row-4" data-col="5"></div>
+                    <div class="board-cell col-6 row-4" data-col="6"></div>
+                    <div class="board-cell col-0 row-5" data-col="0"></div>
+                    <div class="board-cell col-1 row-5" data-col="1"></div>
+                    <div class="board-cell col-2 row-5" data-col="2"></div>
+                    <div class="board-cell col-3 row-5" data-col="3"></div>
+                    <div class="board-cell col-4 row-5" data-col="4"></div>
+                    <div class="board-cell col-5 row-5" data-col="5"></div>
+                    <div class="board-cell col-6 row-5" data-col="6"></div>
+                </div>
+            </div>
+            <div class="winner-popup"></div>
+        </div>
     </body>
 </html>

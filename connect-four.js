@@ -182,11 +182,26 @@ function DOMLogic() {
         blueInput.disabled = bool;
     };
 
+    let completeBoardReset = function() {
+        const boardCells = board.children;
+        for (let cell of boardCells) {
+            cell.classList.remove("blue");
+            cell.classList.remove("red");
+        }
+    };
+
+    let boardUpdate = function(row, col, className) {
+        const cell = document.querySelector(`.row-${row}.col-${col}`);
+        cell.classList.add(className);
+    };
+
     return {
         "boardClickLogic": boardClickLogic,
         "menuClickLogic": menuClickLogic,
         "getPlayerNames": getPlayerNames,
         "toggleInputsDisabled": toggleInputsDisabled,
+        "completeBoardReset": completeBoardReset,
+        "boardUpdate": boardUpdate
     };
 };
 
@@ -223,6 +238,11 @@ const game = (function() {
         gameBoard.reset();
         gameStarted = false;
         displayLink.toggleInputsDisabled(false);
-    }
+        displayLink.completeBoardReset();
+    };
+
+    function tokenPlaceEvent(element) {
+        const colNumber = element.dataset.col;
+    };
 
 })();

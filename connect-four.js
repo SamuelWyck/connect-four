@@ -155,7 +155,7 @@ function DOMLogic() {
     let menuClickLogic = function(callBack) {
         menuBtnDiv.addEventListener("click", function(event) {
             if (event.target.matches(".start-btn")) {
-                callBack(event.target);
+                callBack();
             }
         }) 
     };
@@ -175,16 +175,16 @@ function DOMLogic() {
         return [redName, blueName];
     };
 
-    let toggleInputs = function() {
-        redInput.disabled = !redInput.disabled;
-        blueInput.disabled = !blueInput.disabled;
+    let toggleInputsDisabled = function(bool) {
+        redInput.disabled = bool;
+        blueInput.disabled = bool;
     };
 
     return {
         "boardClickLogic": boardClickLogic,
         "menuClickLogic": menuClickLogic,
         "getPlayerNames": getPlayerNames,
-        "toggleInputs": toggleInputs,
+        "toggleInputsDisabled": toggleInputsDisabled,
     };
 };
 
@@ -207,14 +207,20 @@ const game = (function() {
         const [redName, blueName] = displayLink.getPlayerNames();
         redPlayer.name = redName;
         bluePlayer.name = blueName;
-        displayLink.toggleInputs();
+        displayLink.toggleInputsDisabled(true);
         gameStarted = true;
     };
 
-    function gameStartEvent(element) {
+    function gameStartEvent() {
         if (!gameStarted) {
             startGame();
         }
     };
+
+    function newGameEvent() {
+        gameBoard.reset();
+        gameStarted = false;
+        displayLink.toggleInputsDisabled(false);
+    }
 
 })();

@@ -260,6 +260,7 @@ const game = (function() {
         displayLink.toggleInputsDisabled(false);
         displayLink.completeBoardReset();
         playerTurn = redPlayer;
+        displayLink.changeTurnColor(true);
     };
 
     function getClassName(color) {
@@ -271,6 +272,9 @@ const game = (function() {
     };
 
     function tokenPlaceEvent(element) {
+        if (!gameStarted) {
+            startGame();
+        }
         const colNumber = element.dataset.col;
         const color = playerTurn.color;
         const [success, row, col] = gameBoard.addToken(colNumber, color);

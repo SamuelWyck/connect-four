@@ -39,5 +39,19 @@ h1 {
 
 }
 
+.board {
+    background-color: #12263A;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+}
 
+.board-cell {
+    width: clamp(40px, 40px + 3vw, 70px);
+    height: clamp(40px, 40px + 3vw, 70px);
+    background-color: #42BFDD;
+    border-radius: 50%;
+}
 

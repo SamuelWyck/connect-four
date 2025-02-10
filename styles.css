@@ -89,6 +89,10 @@ label[for="blue-player"] {
     margin-top: 1rem;
 }
 
+label[for="red-player"] + input {
+    border-color: #F2545B;
+}
+
 .drop-zone {
     display: grid;
     grid-template-columns: repeat(7, 1fr);

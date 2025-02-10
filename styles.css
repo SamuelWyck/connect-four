@@ -27,7 +27,7 @@ h1 {
     display: flex;
     margin: 0 2rem;
     flex-wrap: wrap;
-    gap: 2rem;
+    row-gap: 2rem;
     justify-content: center;
 }
 
@@ -43,8 +43,8 @@ h1 {
     background-color: #12263A;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 1rem;
-    padding: 1rem;
+    gap: clamp(1rem, .75rem + 1vw, 1.5rem);
+    padding: clamp(1rem, .75rem + 1vw, 1.5rem);
     border-radius: 20px;
 }
 

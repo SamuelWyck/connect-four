@@ -147,6 +147,6 @@ label[for="blue-player"] + input:disabled {
     background-color: #12263A;
 }
 
-.drop-zone-cell:hover {
+/* .drop-zone-cell:hover {
     background-color: var(--color);
-}
+} */

@@ -120,11 +120,34 @@ function board() {
     };
 };
 
+function DOMLogic() {
+    const board = document.querySelector(".board");
+
+    board.addEventListener("mouseover", function(event) {
+        if (event.target.matches(".board-cell")) {
+            handleBoardHover(event.target);
+        }
+    });
+
+    board.addEventListener("mouseout", function(event) {
+        if (event.target.matches(".board-cell")) {
+            handleBoardHover(event.target);
+        };
+    });
+
+    let handleBoardHover = function(element) {
+        const colNumber = element.dataset.col;
+        const dropZoneCell = document.querySelector(`.drop-zone-cell.col-${colNumber}`);
+        dropZoneCell.classList.toggle("turn-color");
+    };
+}
+
 
 const game = (function() {
     const gameBoard = board();
     const endCheck = winCheck();
     const playerMaker = playerFactory();
+    const displayLink = DOMLogic();
 
     const color1 = "R";
     const color2 = "B";

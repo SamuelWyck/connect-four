@@ -83,6 +83,14 @@ label[for="blue-player"] {
     margin-top: 1rem;
 }
 
+.drop-zone {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: clamp(1rem, .75rem + 1vw, 1.5rem);
+    padding: clamp(1rem, .75rem + 1vw, 1.5rem);
+
+}
+
 .board {
     background-color: #12263A;
     display: grid;
@@ -92,7 +100,7 @@ label[for="blue-player"] {
     border-radius: 20px;
 }
 
-.board-cell {
+.board-cell, .drop-zone-cell {
     width: clamp(40px, 40px + 3vw, 70px);
     height: clamp(40px, 40px + 3vw, 70px);
     background-color: #42BFDD;
@@ -101,10 +109,10 @@ label[for="blue-player"] {
 
 .blue {
     background-color: blue;
-    box-shadow: 0px 0px 5px 8px inset darkblue;
+    /* box-shadow: 0px 0px 5px 8px inset darkblue; */
 }
 
 .red {
     background-color: red;
-    box-shadow: 0px 0px 5px 8px inset darkred;
+    /* box-shadow: 0px 0px 0px 1px darkred; */
 }

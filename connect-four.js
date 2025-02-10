@@ -223,6 +223,7 @@ const game = (function() {
 
     const displayLink = DOMLogic();
     displayLink.menuClickLogic(gameStartEvent, newGameEvent);
+    displayLink.boardClickLogic(tokenPlaceEvent);
 
     let gameStarted = false;
     const colorRed = "R";
@@ -261,8 +262,29 @@ const game = (function() {
         playerTurn = redPlayer;
     };
 
+    function getClassName(color) {
+        if (color === colorBlue) {
+            return "blue";
+        } else {
+            return "red";
+        }
+    };
+
     function tokenPlaceEvent(element) {
         const colNumber = element.dataset.col;
+        const color = playerTurn.color;
+        const [success, row, col] = gameBoard.addToken(colNumber, color);
+        if (!success) {
+            return;
+        }
+        const className = getClassName(color);
+        displayLink.boardUpdate(row, col, className);
+        if (endCheck.checkWinner(gameBoard.getBoard(), row, col)) {
+            //game is won
+        }
+        changePlayerTurn();
+        const redTurn = playerTurn.color == colorRed;
+        displayLink.changeTurnColor(redTurn);
     };
 
 })();

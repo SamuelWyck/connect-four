@@ -20,5 +20,6 @@ h1 {
     font-size: 4rem;
     color: #F2545B;
     margin: .5rem 0 .5rem 2rem;
+    text-shadow: 1px 1px gray;
 }
 

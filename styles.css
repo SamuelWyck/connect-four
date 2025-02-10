@@ -26,10 +26,34 @@ h1 {
     flex-wrap: wrap;
     row-gap: 2rem;
     justify-content: center;
+    /* border: 1px solid black; */
 }
 
 .control-interface {
     min-width: 40%;
+}
+
+.btn-container {
+    margin-left: 4.7rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-container button {
+    background-color: #FF9F1C;
+    font-family: "Knewave", "Roboto", sans-serif;
+    font-size: 1.5rem;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+}
+
+.new-game-btn {
+    margin-right: 1rem;
+}
+
+.input-container {
+    margin-left: 7rem;
 }
 
 .board-container {

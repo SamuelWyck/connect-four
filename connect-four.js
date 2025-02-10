@@ -122,6 +122,9 @@ function board() {
 
 function DOMLogic() {
     const board = document.querySelector(".board");
+    const menuBtnDiv = document.querySelector(".btn-container");
+    const redInput = document.querySelector("#red-player");
+    const blueInput = document.querySelector("#blue-player");
 
     board.addEventListener("mouseover", function(event) {
         if (event.target.matches(".board-cell")) {
@@ -141,14 +144,42 @@ function DOMLogic() {
         dropZoneCell.classList.toggle("turn-color");
     };
 
-    let clickLogic = function(callBack) {
+    let boardClickLogic = function(callBack) {
         board.addEventListener("click", function(event) {
             if (event.target.matches(".board-cell")) {
                 callBack(event.target);
             };
         });
     };
-    return {"clickLogic": clickLogic};
+
+    let menuClickLogic = function(callBack) {
+        menuBtnDiv.addEventListener("click", function(event) {
+            if (event.target.matches(".start-btn")) {
+                callBack(event.target);
+            }
+        }) 
+    };
+
+    let getPlayerNames = function() {
+        let redName = redInput.value;
+        if (redName === "" || redName.length > 20) {
+            redName = redInput.placeholder;
+            redInput.value = redName;
+        }
+
+        let blueName = blueInput.value;
+        if (blueName === "" || blueName.length > 20) {
+            blueName = blueInput.placeholder;
+            blueInput.value = blueName;
+        }
+        return [redName, blueName];
+    };
+
+    return {
+        "boardClickLogic": boardClickLogic,
+        "menuClickLogic": menuClickLogic,
+        "getPlayerNames": getPlayerNames,
+    };
 };
 
 
@@ -156,10 +187,15 @@ const game = (function() {
     const gameBoard = board();
     const endCheck = winCheck();
     const playerMaker = playerFactory();
-    const displayLink = DOMLogic();
 
-    const color1 = "R";
-    const color2 = "B";
+    const displayLink = DOMLogic();
+    displayLink.menuClickLogic(menuClickEvent);
+
+    let gameStarted = false;
+    const colorRed = "R";
+    const colorBlue = "B";
+    let redPlayer = playerMaker.makePlayer("Red Player", color1);
+    let bluePlayer = playerMaker.makePlayer("Blue Player", colorBlue);
 
     let getPlayers = function() {
         const [playerName1, playerName2] = getPlayerNames();
@@ -169,8 +205,14 @@ const game = (function() {
         return [player1, player2];
     };
 
-    let getPlayerNames = function() {
-
+    let menuClickEvent = function(element) {
+        if (!gameStarted) {
+            startGame();
+        }
     };
 
+    let startGame = function() {
+        const [redName, blueName] = displayLink.getPlayerNames();
+
+    };
 })();

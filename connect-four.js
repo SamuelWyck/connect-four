@@ -125,6 +125,7 @@ function DOMLogic() {
     const menuBtnDiv = document.querySelector(".btn-container");
     const redInput = document.querySelector("#red-player");
     const blueInput = document.querySelector("#blue-player");
+    const htmlRoot = document.querySelector("html");
 
     board.addEventListener("mouseover", function(event) {
         if (event.target.matches(".board-cell")) {
@@ -177,6 +178,14 @@ function DOMLogic() {
         return [redName, blueName];
     };
 
+    let changeTurnColor = function(redTurn) {
+        if (redTurn) {
+            htmlRoot.style.setProperty("--color", "red");
+        } else {
+            htmlRoot.style.setProperty("--color", "blue");
+        }
+    };
+
     let toggleInputsDisabled = function(bool) {
         redInput.disabled = bool;
         blueInput.disabled = bool;
@@ -201,7 +210,8 @@ function DOMLogic() {
         "getPlayerNames": getPlayerNames,
         "toggleInputsDisabled": toggleInputsDisabled,
         "completeBoardReset": completeBoardReset,
-        "boardUpdate": boardUpdate
+        "boardUpdate": boardUpdate,
+        "changeTurnColor": changeTurnColor
     };
 };
 
@@ -219,6 +229,7 @@ const game = (function() {
     const colorBlue = "B";
     let redPlayer = playerMaker.makePlayer("Red Player", colorRed);
     let bluePlayer = playerMaker.makePlayer("Blue Player", colorBlue);
+    let playerTurn = redPlayer;
 
     let startGame = function() {
         const [redName, blueName] = displayLink.getPlayerNames();
@@ -239,6 +250,7 @@ const game = (function() {
         gameStarted = false;
         displayLink.toggleInputsDisabled(false);
         displayLink.completeBoardReset();
+        playerTurn = redPlayer;
     };
 
     function tokenPlaceEvent(element) {

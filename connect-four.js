@@ -208,6 +208,7 @@ const game = (function() {
         redPlayer.name = redName;
         bluePlayer.name = blueName;
         displayLink.toggleInputs();
+        gameStarted = true;
     };
 
     function gameStartEvent(element) {

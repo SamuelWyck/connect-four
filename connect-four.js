@@ -92,9 +92,9 @@ function board() {
         let row = 0;
         const colValid = 0 <= col && col < boardArray[0].length;
         if (!colValid) {
-            return false;
+            return [false, 0, 0];
         } else if (boardArray[row][col] !== emptySpace) {
-            return false;
+            return [false, 0, 0];
         }
         
         let dfsAddToken = function(row, col, color) {
@@ -103,9 +103,9 @@ function board() {
             if (!nextRowValid || boardArray[row + 1][col] !== emptySpace) {
                 if (currentPos === emptySpace) {
                     boardArray[row][col] = color;
-                    return true;
+                    return [true, row, col];
                 }
-                return false;
+                return [false, 0, 0];
             }
 
             return dfsAddToken(row + 1, col, color);

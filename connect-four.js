@@ -140,7 +140,16 @@ function DOMLogic() {
         const dropZoneCell = document.querySelector(`.drop-zone-cell.col-${colNumber}`);
         dropZoneCell.classList.toggle("turn-color");
     };
-}
+
+    let clickLogic = function(callBack) {
+        board.addEventListener("click", function(event) {
+            if (event.target.matches(".board-cell")) {
+                callBack(event.target);
+            };
+        });
+    };
+    return {"clickLogic": clickLogic};
+};
 
 
 const game = (function() {

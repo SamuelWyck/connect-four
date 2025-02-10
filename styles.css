@@ -91,6 +91,17 @@ label[for="blue-player"] {
 
 label[for="red-player"] + input {
     border-color: #F2545B;
+    color: #F2545B;
+}
+
+label[for="red-player"] + input:disabled {
+    font-weight: bold;
+    color: #F2545B;
+}
+
+label[for="blue-player"] + input:disabled {
+    font-weight: bold;
+    color: #12263A;
 }
 
 .drop-zone {

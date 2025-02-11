@@ -226,6 +226,7 @@ const game = (function() {
     displayLink.boardClickLogic(tokenPlaceEvent);
 
     let gameStarted = false;
+    let gameWon = false;
     const colorRed = "R";
     const colorBlue = "B";
     let redPlayer = playerMaker.makePlayer("Red Player", colorRed);
@@ -271,6 +272,10 @@ const game = (function() {
         }
     };
 
+    function gameOver() {
+        
+    };
+
     function tokenPlaceEvent(element) {
         if (!gameStarted) {
             startGame();
@@ -284,7 +289,8 @@ const game = (function() {
         const className = getClassName(color);
         displayLink.boardUpdate(row, col, className);
         if (endCheck.checkWinner(gameBoard.getBoard(), row, col)) {
-            //game is won
+            gameOver();
+            return;
         }
         changePlayerTurn();
         const redTurn = playerTurn.color == colorRed;

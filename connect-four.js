@@ -252,11 +252,29 @@ function DOMLogic() {
     };
 };
 
+function audioManager() {
+    const cheerSound = new Audio("./audio/cheer.mp3");
+    const tokenSound = new Audio("./audio/token-drop3.mp3");
+
+    let playTokenSound = function() {
+        document.getElementById("tokenSound").play();
+    };
+
+    let playCheerSound = function() {
+        cheerSound.play();
+    };
+
+    return {
+        "playTokenSound": playTokenSound,
+        "playCheerSound": playCheerSound
+    }
+};
 
 const game = (function() {
     const gameBoard = board();
     const endCheck = winCheck();
     const playerMaker = playerFactory();
+    const audio = audioManager();
     
     let gameStarted = false;
     let gameWon = false;
@@ -316,6 +334,7 @@ const game = (function() {
     };
 
     function gameOver() {
+        audio.playCheerSound();
         gameWon = true;
         displayLink.displayWinnerName(playerTurn.name);
         displayLink.clearDropZone();
@@ -335,6 +354,7 @@ const game = (function() {
         if (!success) {
             return;
         }
+        audio.playTokenSound();
         const className = getClassName(color);
         displayLink.boardUpdate(row, col, className);
         if (endCheck.checkWinner(gameBoard.getBoard(), row, col)) {

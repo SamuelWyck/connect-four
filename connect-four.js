@@ -123,6 +123,7 @@ function board() {
 };
 
 function DOMLogic() {
+    const dropZone = document.querySelector(".drop-zone");
     const board = document.querySelector(".board");
     const menuBtnDiv = document.querySelector(".btn-container");
     const redInput = document.querySelector("#red-player");
@@ -130,24 +131,30 @@ function DOMLogic() {
     const htmlRoot = document.querySelector("html");
     const winPopup = document.querySelector(".winner-popup");
     const winNameSpan = document.querySelector(".winner-name");
-
-    board.addEventListener("mouseover", function(event) {
-        if (event.target.matches(".board-cell")) {
-            handleBoardHover(event.target);
-        }
-    });
-
-    board.addEventListener("mouseout", function(event) {
-        if (event.target.matches(".board-cell")) {
-            handleBoardHover(event.target);
-        };
-    });
-
+    
     winPopup.addEventListener("click", function(event) {
         if (event.target.matches("button")) {
             togglePopup();
         }
     });
+
+    let boardHoverLogic = function(callBack) {
+        board.addEventListener("mouseover", function(event) {
+            if (event.target.matches(".board-cell")) {
+                if (!callBack()) {
+                    handleBoardHover(event.target);
+                }
+            }
+        });
+
+        board.addEventListener("mouseout", function(event) {
+            if (event.target.matches(".board-cell")) {
+                if (!callBack()) {
+                    handleBoardHover(event.target);
+                }
+            };
+        });
+    };
 
     let togglePopup = function() {
         winPopup.classList.toggle("hide-popup");
@@ -155,6 +162,13 @@ function DOMLogic() {
 
     let displayWinnerName = function(name) {
         winNameSpan.textContent = name.toUpperCase();
+    };
+
+    let clearDropZone = function() {
+        const dropZoneCells = dropZone.children;
+        for (let cell of dropZoneCells) {
+            cell.classList.remove("turn-color");
+        }
     };
 
     let handleBoardHover = function(element) {
@@ -232,7 +246,9 @@ function DOMLogic() {
         "boardUpdate": boardUpdate,
         "changeTurnColor": changeTurnColor,
         "togglePopup": togglePopup,
-        "displayWinnerName": displayWinnerName
+        "displayWinnerName": displayWinnerName,
+        "boardHoverLogic": boardHoverLogic,
+        "clearDropZone": clearDropZone
     };
 };
 
@@ -241,11 +257,7 @@ const game = (function() {
     const gameBoard = board();
     const endCheck = winCheck();
     const playerMaker = playerFactory();
-
-    const displayLink = DOMLogic();
-    displayLink.menuClickLogic(gameStartEvent, newGameEvent);
-    displayLink.boardClickLogic(tokenPlaceEvent);
-
+    
     let gameStarted = false;
     let gameWon = false;
     const colorRed = "R";
@@ -253,6 +265,11 @@ const game = (function() {
     let redPlayer = playerMaker.makePlayer("Red Player", colorRed);
     let bluePlayer = playerMaker.makePlayer("Blue Player", colorBlue);
     let playerTurn = redPlayer;
+    
+    const displayLink = DOMLogic();
+    displayLink.menuClickLogic(gameStartEvent, newGameEvent);
+    displayLink.boardClickLogic(tokenPlaceEvent);
+    displayLink.boardHoverLogic(gameWonCheck);
 
     let startGame = function() {
         const [redName, blueName] = displayLink.getPlayerNames();
@@ -260,6 +277,10 @@ const game = (function() {
         bluePlayer.name = blueName;
         displayLink.toggleInputsDisabled(true);
         gameStarted = true;
+    };
+
+    function gameWonCheck() {
+        return gameWon;
     };
 
     function gameStartEvent() {
@@ -297,6 +318,7 @@ const game = (function() {
     function gameOver() {
         gameWon = true;
         displayLink.displayWinnerName(playerTurn.name);
+        displayLink.clearDropZone();
         displayLink.togglePopup();
     };
 

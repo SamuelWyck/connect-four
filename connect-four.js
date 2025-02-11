@@ -292,7 +292,9 @@ const game = (function() {
     };
 
     function gameOver() {
-
+        gameWon = true;
+        displayLink.displayWinnerName(playerTurn.name);
+        displayLink.togglePopup();
     };
 
     function tokenPlaceEvent(element) {
@@ -307,6 +309,7 @@ const game = (function() {
         }
         const className = getClassName(color);
         displayLink.boardUpdate(row, col, className);
+        console.log(endCheck.checkWinner(gameBoard.getBoard(), row, col))
         if (endCheck.checkWinner(gameBoard.getBoard(), row, col)) {
             gameOver();
             return;

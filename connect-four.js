@@ -127,6 +127,7 @@ function DOMLogic() {
     const blueInput = document.querySelector("#blue-player");
     const htmlRoot = document.querySelector("html");
     const winPopup = document.querySelector(".winner-popup");
+    const winNameSpan = document.querySelector(".winner-name");
 
     board.addEventListener("mouseover", function(event) {
         if (event.target.matches(".board-cell")) {
@@ -148,6 +149,10 @@ function DOMLogic() {
 
     let togglePopup = function() {
         winPopup.classList.add("hide-popup");
+    };
+
+    let displayWinnerName = function(name) {
+        winNameSpan.textContent = name.toUpperCase();
     };
 
     let handleBoardHover = function(element) {
@@ -223,7 +228,8 @@ function DOMLogic() {
         "completeBoardReset": completeBoardReset,
         "boardUpdate": boardUpdate,
         "changeTurnColor": changeTurnColor,
-        "togglePopup": togglePopup
+        "togglePopup": togglePopup,
+        "displayWinnerName": displayWinnerName
     };
 };
 

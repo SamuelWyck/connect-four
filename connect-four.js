@@ -15,13 +15,14 @@ function winCheck() {
 
         const minMatches = 4;
         const positionChanges  = [
-            [(1, 0), (-1, 0)],
-            [(0, -1), (0, 1)],
-            [(-1, -1), (1, 1)],
-            [(-1, 1), (1, -1)]
+            [[1, 0], [-1, 0]],
+            [[0, -1], [0, 1]],
+            [[-1, -1], [1, 1]],
+            [[-1, 1], [1, -1]]
         ];
 
-        for (let posChange of positionChanges) {
+        for (let i = 0; i < positionChanges.length; i += 1) {
+            const posChange = positionChanges[i];
             if (checkWinOnLine(board, row, col, color, new Set(), posChange[0], posChange[1]) >= minMatches) {
                 return true;
             }
@@ -32,16 +33,16 @@ function winCheck() {
     let checkWinOnLine = function(board, row, col, color, visited, firstChange, secondChange) {
         const rowValid = 0 <= row && row < board.length;
         const colValid = 0 <= col && col < board[0].length;
-        const pos = (row, col);
+        const pos = [row, col];
         if (!rowValid || !colValid) {
             return 0;
-        } else if (pos in visited) {
+        } else if (visited.has(JSON.stringify(pos))) {
             return 0;
         } else if (board[row][col] !== color) {
             return 0;
         }
 
-        visited.add(pos);
+        visited.add(JSON.stringify(pos));
 
         firstPos = checkWinOnLine(
             board, row + firstChange[0], col + firstChange[1],
@@ -90,6 +91,7 @@ function board() {
 
     let addToken = function(col, color) {
         let row = 0;
+        col = Number(col);
         const colValid = 0 <= col && col < boardArray[0].length;
         if (!colValid) {
             return [false, 0, 0];

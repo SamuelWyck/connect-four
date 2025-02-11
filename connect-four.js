@@ -182,7 +182,7 @@ function DOMLogic() {
     };
 
     let getPlayerNames = function() {
-        const maxLength = 15;
+        const maxLength = 20;
         let redName = redInput.value;
         if (redName === "" || redName.length > maxLength) {
             redName = redInput.placeholder;

@@ -126,6 +126,7 @@ function DOMLogic() {
     const redInput = document.querySelector("#red-player");
     const blueInput = document.querySelector("#blue-player");
     const htmlRoot = document.querySelector("html");
+    const winPopup = document.querySelector(".winner-popup");
 
     board.addEventListener("mouseover", function(event) {
         if (event.target.matches(".board-cell")) {
@@ -138,6 +139,16 @@ function DOMLogic() {
             handleBoardHover(event.target);
         };
     });
+
+    winPopup.addEventListener("click", function(event) {
+        if (event.target.matches("button")) {
+            togglePopup();
+        }
+    });
+
+    let togglePopup = function() {
+        winPopup.classList.add("hide-popup");
+    };
 
     let handleBoardHover = function(element) {
         const colNumber = element.dataset.col;
@@ -211,7 +222,8 @@ function DOMLogic() {
         "toggleInputsDisabled": toggleInputsDisabled,
         "completeBoardReset": completeBoardReset,
         "boardUpdate": boardUpdate,
-        "changeTurnColor": changeTurnColor
+        "changeTurnColor": changeTurnColor,
+        "togglePopup": togglePopup
     };
 };
 
@@ -273,7 +285,7 @@ const game = (function() {
     };
 
     function gameOver() {
-        
+
     };
 
     function tokenPlaceEvent(element) {

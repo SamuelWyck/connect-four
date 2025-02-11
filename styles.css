@@ -207,4 +207,5 @@ label[for="blue-player"] + input:disabled {
     animation-direction: alternate;
     animation-duration: 2s;
     animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }

@@ -178,7 +178,7 @@ function DOMLogic() {
             } else if (event.target.matches(".new-game-btn")) {
                 newCallBack();
             }
-        }) 
+        })
     };
 
     let getPlayerNames = function() {
@@ -279,6 +279,7 @@ const game = (function() {
     function newGameEvent() {
         gameBoard.reset();
         gameStarted = false;
+        gameWon = false;
         displayLink.toggleInputsDisabled(false);
         displayLink.completeBoardReset();
         playerTurn = redPlayer;
@@ -300,6 +301,9 @@ const game = (function() {
     };
 
     function tokenPlaceEvent(element) {
+        if (gameWon) {
+            return;
+        }
         if (!gameStarted) {
             startGame();
         }

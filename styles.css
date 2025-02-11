@@ -97,6 +97,10 @@ label[for="blue-player"] {
 
 }
 
+.board-container {
+    position: relative;
+}
+
 .board {
     background-color: #12263A;
     display: grid;
@@ -132,6 +136,20 @@ label[for="blue-player"] {
     background-color: #12263A;
 }
 
-.drop-zone-cell:hover {
+/* .drop-zone-cell:hover {
     background-color: var(--color);
+} */
+
+.winner-popup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: max(min-content, 300px);
+    height: 200px;
+    margin: 0 auto;
+    top: 20%;
+    background-color: #C5EBC3;
+    border: 2px solid #12263A;
+    border-radius: 10px;
+    padding: 1rem;
 }

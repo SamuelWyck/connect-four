@@ -150,7 +150,7 @@ function DOMLogic() {
     });
 
     let togglePopup = function() {
-        winPopup.classList.add("hide-popup");
+        winPopup.classList.toggle("hide-popup");
     };
 
     let displayWinnerName = function(name) {
@@ -311,7 +311,6 @@ const game = (function() {
         }
         const className = getClassName(color);
         displayLink.boardUpdate(row, col, className);
-        console.log(endCheck.checkWinner(gameBoard.getBoard(), row, col))
         if (endCheck.checkWinner(gameBoard.getBoard(), row, col)) {
             gameOver();
             return;

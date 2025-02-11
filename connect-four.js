@@ -156,8 +156,12 @@ function DOMLogic() {
         });
     };
 
-    let togglePopup = function() {
-        winPopup.classList.toggle("hide-popup");
+    let togglePopup = function(toggle=true) {
+        if (toggle) {
+            winPopup.classList.toggle("hide-popup");
+        } else {
+            winPopup.classList.add("hide-popup");
+        }
     };
 
     let displayWinnerName = function(name) {
@@ -316,6 +320,7 @@ const game = (function() {
 
     function newGameEvent() {
         gameBoard.reset();
+        displayLink.togglePopup(false);
         gameStarted = false;
         gameWon = false;
         displayLink.toggleInputsDisabled(false);

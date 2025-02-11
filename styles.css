@@ -197,6 +197,10 @@ label[for="blue-player"] + input:disabled {
     display: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 @keyframes blink {
     0% {background-color: #FF9F1C; color: #12263A;}
     100% {background-color: #12263A; color: #FF9F1C;}

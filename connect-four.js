@@ -131,6 +131,7 @@ function DOMLogic() {
     const htmlRoot = document.querySelector("html");
     const winPopup = document.querySelector(".winner-popup");
     const winNameSpan = document.querySelector(".winner-name");
+    const newGameBtn = document.querySelector(".new-game-btn");
     
     winPopup.addEventListener("click", function(event) {
         if (event.target.matches("button")) {
@@ -161,6 +162,14 @@ function DOMLogic() {
             winPopup.classList.toggle("hide-popup");
         } else {
             winPopup.classList.add("hide-popup");
+        }
+    };
+
+    let handleBtnAnimation = function(remove=true) {
+        if (remove) {
+            newGameBtn.classList.remove("blink");
+        } else {
+            newGameBtn.classList.add("blink");
         }
     };
 
@@ -252,7 +261,8 @@ function DOMLogic() {
         "togglePopup": togglePopup,
         "displayWinnerName": displayWinnerName,
         "boardHoverLogic": boardHoverLogic,
-        "clearDropZone": clearDropZone
+        "clearDropZone": clearDropZone,
+        "handleBtnAnimation": handleBtnAnimation
     };
 };
 
@@ -358,6 +368,7 @@ const game = (function() {
         if (!success) {
             return;
         }
+
         audio.playTokenSound();
         const className = getClassName(color);
         displayLink.boardUpdate(row, col, className);
@@ -365,6 +376,7 @@ const game = (function() {
             gameOver();
             return;
         }
+
         changePlayerTurn();
         const redTurn = playerTurn.color == colorRed;
         displayLink.changeTurnColor(redTurn);

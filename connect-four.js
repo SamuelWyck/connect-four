@@ -337,6 +337,7 @@ const game = (function() {
         displayLink.completeBoardReset();
         playerTurn = redPlayer;
         displayLink.changeTurnColor(true);
+        displayLink.handleBtnAnimation();
     };
 
     function getClassName(color) {
@@ -353,6 +354,7 @@ const game = (function() {
         displayLink.displayWinnerName(playerTurn.name);
         displayLink.clearDropZone();
         displayLink.togglePopup();
+        displayLink.handleBtnAnimation(false);
     };
 
     function tokenPlaceEvent(element) {

@@ -153,7 +153,7 @@ label[for="blue-player"] + input:disabled {
     left: 0;
     right: 0;
     width: max(min-content, 300px);
-    height: 200px;
+    min-height: 200px;
     margin: 0 auto;
     top: 43%;
     background-color: #C5EBC3;

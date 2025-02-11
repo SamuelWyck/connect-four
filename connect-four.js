@@ -23,7 +23,7 @@ function winCheck() {
 
         for (let posChange of positionChanges) {
             if (checkWinOnLine(board, row, col, color, new Set(), posChange[0], posChange[1]) >= minMatches) {
-                return color;
+                return true;
             }
         }
         return false;

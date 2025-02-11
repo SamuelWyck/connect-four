@@ -23,7 +23,8 @@ function winCheck() {
 
         for (let i = 0; i < positionChanges.length; i += 1) {
             const posChange = positionChanges[i];
-            if (checkWinOnLine(board, row, col, color, new Set(), posChange[0], posChange[1]) >= minMatches) {
+            const result = checkWinOnLine(board, row, col, color, new Set(), posChange[0], posChange[1]);
+            if (result >= minMatches) {
                 return true;
             }
         }
@@ -44,11 +45,11 @@ function winCheck() {
 
         visited.add(JSON.stringify(pos));
 
-        firstPos = checkWinOnLine(
+        let firstPos = checkWinOnLine(
             board, row + firstChange[0], col + firstChange[1],
             color, visited, firstChange, secondChange
         );
-        secondPos = checkWinOnLine(
+        let secondPos = checkWinOnLine(
             board, row + secondChange[0], col + secondChange[1],
             color, visited, firstChange, secondChange
         );

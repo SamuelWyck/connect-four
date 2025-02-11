@@ -254,7 +254,6 @@ function DOMLogic() {
 
 function audioManager() {
     const cheerSound = new Audio("./audio/cheer.mp3");
-    const tokenSound = new Audio("./audio/token-drop3.mp3");
 
     let playTokenSound = function() {
         document.getElementById("tokenSound").play();

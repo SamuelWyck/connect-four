@@ -180,14 +180,15 @@ function DOMLogic() {
     };
 
     let getPlayerNames = function() {
+        const maxLength = 15;
         let redName = redInput.value;
-        if (redName === "" || redName.length > 20) {
+        if (redName === "" || redName.length > maxLength) {
             redName = redInput.placeholder;
             redInput.value = redName;
         }
 
         let blueName = blueInput.value;
-        if (blueName === "" || blueName.length > 20) {
+        if (blueName === "" || blueName.length > maxLength) {
             blueName = blueInput.placeholder;
             blueInput.value = blueName;
         }

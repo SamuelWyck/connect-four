@@ -27,7 +27,6 @@ h1 {
     flex-wrap: wrap;
     row-gap: 2rem;
     justify-content: center;
-    /* border: 1px solid black; */
 }
 
 .control-interface {
@@ -37,7 +36,6 @@ h1 {
 .btn-container {
     margin-left: 4.5rem;
     margin-top: clamp(1rem, .1rem + 5vw, 7rem);
-    /* margin-top: 1rem; */
     margin-bottom: 2rem;
 }
 
@@ -131,12 +129,10 @@ label[for="blue-player"] + input:disabled {
 
 .blue {
     background-color: blue;
-    /* box-shadow: 0px 0px 5px 8px inset darkblue; */
 }
 
 .red {
     background-color: red;
-    /* box-shadow: 0px 0px 0px 1px darkred; */
 }
 
 .turn-color {
